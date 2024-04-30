@@ -1,14 +1,12 @@
+mod components;
 mod map;
-mod player;
-mod position;
-mod renderable;
 mod state;
 mod tile;
 
+use components::player::Player;
+use components::position::Position;
+use components::renderable::Renderable;
 use map::new_map;
-use player::Player;
-use position::Position;
-use renderable::Renderable;
 use rltk::{RltkBuilder, RGB};
 use specs::prelude::*;
 use state::State;

@@ -1,7 +1,8 @@
-use crate::{map::xy_idx, position::Position, tile::TileType, MAP_HEIGHT, MAP_WIDTH};
+use crate::{map::xy_idx, tile::TileType, MAP_HEIGHT, MAP_WIDTH};
 use specs_derive::Component;
 use specs::prelude::*;
 use std::cmp::{max, min};
+use super::position::Position;
 
 #[derive(Component, Debug)]
 pub struct Player {}

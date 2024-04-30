@@ -1,4 +1,4 @@
-use crate::{map::draw_map, player::try_move_player, position::Position, renderable::Renderable, tile::TileType};
+use crate::{components::{player::try_move_player, position::Position, renderable::Renderable}, map::draw_map, tile::TileType};
 use rltk::{GameState, Rltk, VirtualKeyCode};
 use specs::{Join, World, WorldExt};
 
