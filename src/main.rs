@@ -1,5 +1,3 @@
-mod left_mover;
-mod left_walker;
 mod map;
 mod player;
 mod position;
@@ -7,7 +5,6 @@ mod renderable;
 mod state;
 mod tile;
 
-use left_mover::LeftMover;
 use map::new_map;
 use player::Player;
 use position::Position;
@@ -28,7 +25,6 @@ fn main() -> rltk::BError {
     };
     game_state.ecs.register::<Position>();
     game_state.ecs.register::<Renderable>();
-    game_state.ecs.register::<LeftMover>();
     game_state.ecs.register::<Player>();
     game_state.ecs
             .create_entity()

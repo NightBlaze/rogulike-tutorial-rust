@@ -1,6 +1,6 @@
-use crate::{left_walker::LeftWalker, map::draw_map, player::Player, position::Position, renderable::Renderable, tile::TileType, MAP_HEIGHT, MAP_WIDTH};
+use crate::{map::draw_map, player::Player, position::Position, renderable::Renderable, tile::TileType, MAP_HEIGHT, MAP_WIDTH};
 use rltk::{GameState, Rltk, VirtualKeyCode};
-use specs::{Join, RunNow, World, WorldExt};
+use specs::{Join, World, WorldExt};
 use std::cmp::{max, min};
 
 pub struct State {
@@ -9,8 +9,6 @@ pub struct State {
 
 impl State {
     pub fn run_systems(&mut self) {
-        let mut left_walker = LeftWalker{};
-        left_walker.run_now(&self.ecs);
         self.ecs.maintain();
     }
 }
