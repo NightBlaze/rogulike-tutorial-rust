@@ -40,18 +40,6 @@ fn main() -> rltk::BError {
             })
             .with(Player{})
             .build();
-    for i in 0..10 {
-        game_state.ecs
-            .create_entity()
-            .with(Position {x: i * 7, y: 20})
-            .with(Renderable {
-                glyph: rltk::to_cp437('☺'),
-                foreground: RGB::named(rltk::RED),
-                background: RGB::named(rltk::BLACK),
-            })
-            .with(LeftMover{})
-            .build();
-    }
     game_state.ecs.insert(new_map());
     rltk::main_loop(context, game_state)
 }
