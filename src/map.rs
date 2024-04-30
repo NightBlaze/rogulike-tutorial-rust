@@ -63,6 +63,6 @@ pub fn draw_map(map: &[TileType], ctx: &mut Rltk) {
     }
 }
 
-fn xy_idx(x: isize, y: isize) -> usize {
+pub fn xy_idx(x: isize, y: isize) -> usize {
     ((y * MAP_WIDTH) + x) as usize
 }
