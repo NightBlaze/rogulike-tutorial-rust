@@ -1,4 +1,4 @@
-use crate::{left_walker::LeftWalker, player::Player, position::Position, renderable::Renderable, MAP_HEIGHT, MAP_WIDTH};
+use crate::{left_walker::LeftWalker, map::draw_map, player::Player, position::Position, renderable::Renderable, tile::TileType, MAP_HEIGHT, MAP_WIDTH};
 use rltk::{GameState, Rltk, VirtualKeyCode};
 use specs::{Join, RunNow, World, WorldExt};
 use std::cmp::{max, min};
@@ -21,6 +21,9 @@ impl GameState for State {
 
         player_input(self, ctx);
         self.run_systems();
+
+        let map = self.ecs.fetch::<Vec<TileType>>();
+        draw_map(&map, ctx);
 
         let positions = self.ecs.read_storage::<Position>();
         let renderables = self.ecs.read_storage::<Renderable>();

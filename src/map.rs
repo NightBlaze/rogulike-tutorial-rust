@@ -1,3 +1,5 @@
+use rltk::{Rltk, RGB};
+
 use crate::{tile::TileType, MAP_HEIGHT, MAP_WIDTH};
 
 pub fn new_map() -> Vec<TileType> {
@@ -26,6 +28,39 @@ pub fn new_map() -> Vec<TileType> {
     }
 
     map
+}
+
+pub fn draw_map(map: &[TileType], ctx: &mut Rltk) {
+    let mut y = 0;
+    let mut x = 0;
+    for tile in map.iter() {
+        match tile {
+            TileType::Floor => {
+                ctx.set(
+                    x,
+                    y,
+                    RGB::from_f32(0.5, 0.5, 0.5),
+                    RGB::from_f32(0.0, 0.0, 0.0),
+                    rltk::to_cp437('.'),
+                )
+            },
+            TileType::Wall => {
+                ctx.set(
+                    x,
+                    y,
+                    RGB::from_f32(0.0, 1.0, 0.0),
+                    RGB::from_f32(0.0, 0.0, 0.0),
+                    rltk::to_cp437('#'),
+                )
+            },
+        }
+
+        x += 1;
+        if x > MAP_WIDTH - 1 {
+            x = 0;
+            y += 1;
+        }
+    }
 }
 
 fn xy_idx(x: isize, y: isize) -> usize {
